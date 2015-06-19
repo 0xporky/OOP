@@ -43,6 +43,15 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	s5 = s2(2, 2);
 	cout << s5.get_str() << endl;
+
+	if (s5 < s4) cout << "s5 < s4" << endl;
+	else cout << "s5 >= s4" << endl;
+
+	if (s5 < "test") cout << "s5 < test" << endl;
+	else cout << "s5 >= test" << endl;
+
+	if ("test" < s5) cout << "test < s5" << endl;
+	else cout << "test >= s5" << endl;
 	
 	return 0;
 }

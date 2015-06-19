@@ -159,3 +159,75 @@ XString XString::operator() (const int idx, const int size) {
 	delete[] tmp;
 	return s;
 }
+
+
+
+bool operator > (const XString &left, const XString &right) {
+	return strcmp(left.str, right.str) > 0;
+}
+
+bool operator > (const XString &left, const char *right) {
+	return strcmp(left.str, right) > 0;
+}
+
+bool operator > (const char *left, const XString &right) {
+	return strcmp(left, right.str) > 0;
+}
+
+
+bool operator < (const XString &left, const XString &right) {
+	return strcmp(left.str, right.str) < 0;
+}
+
+bool operator < (const XString &left, const char *right) {
+	return strcmp(left.str, right) < 0;
+}
+
+bool operator < (const char *left, const XString &right) {
+	return strcmp(left, right.str) < 0;
+}
+
+
+bool operator >= (const XString &left, const XString &right) {
+	int result = strcmp(left.str, right.str);
+	return (result > 0 || result == 0);
+}
+
+bool operator >= (const XString &left, const char *right) {
+	int result = strcmp(left.str, right);
+	return (result > 0 || result == 0);
+}
+
+bool operator >= (const char *left, const XString &right) {
+	int result = strcmp(left, right.str);
+	return (result > 0 || result == 0);
+}
+
+
+bool operator <= (const XString &left, const XString &right) {
+	int result = strcmp(left.str, right.str);
+	return (result < 0 || result == 0);
+}
+
+bool operator <= (const XString &left, const char *right) {
+	int result = strcmp(left.str, right);
+	return (result < 0 || result == 0);
+}
+
+bool operator <= (const char *left, const XString &right) {
+	int result = strcmp(left, right.str);
+	return (result < 0 || result == 0);
+}
+
+
+bool operator == (const XString &left, const XString &right) {
+	return strcmp(left.str, right.str) == 0;
+}
+
+bool operator == (const XString &left, const char *right) {
+	return strcmp(left.str, right) == 0;
+}
+
+bool operator == (const char *left, const XString &right) {
+	return strcmp(left, right.str) == 0;
+}

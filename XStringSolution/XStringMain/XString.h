@@ -25,6 +25,30 @@ public:
 	friend XString& operator += (XString &left, const XString &right);
 	friend XString& operator += (XString &left, const char *right);
 
+	friend bool operator > (const XString &left, const XString &right);
+	friend bool operator > (const XString &left, const char *right);
+	friend bool operator > (const char *left, const XString &right);
+
+	friend bool operator < (const XString &left, const XString &right);
+	friend bool operator < (const XString &left, const char *right);
+	friend bool operator < (const char *left, const XString &right);
+
+	friend bool operator >= (const XString &left, const XString &right);
+	friend bool operator >= (const XString &left, const char *right);
+	friend bool operator >= (const char *left, const XString &right);
+
+	friend bool operator <= (const XString &left, const XString &right);
+	friend bool operator <= (const XString &left, const char *right);
+	friend bool operator <= (const char *left, const XString &right);
+
+	friend bool operator != (const XString &left, const XString &right);
+	friend bool operator != (const XString &left, const char *right);
+	friend bool operator != (const char *left, const XString &right);
+
+	friend bool operator == (const XString &left, const XString &right);
+	friend bool operator == (const XString &left, const char *right);
+	friend bool operator == (const char *left, const XString &right);
+
 	char &operator [] (const int idx);
 	XString operator() (const int idx, const int size);
 
