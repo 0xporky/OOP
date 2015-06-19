@@ -9,9 +9,13 @@ public:
 	XString(const char *str);
 	XString(const XString &obj);
 
+	XString(XString&& obj);
+
 	~XString();
 
 	XString& operator = (const XString &right);
+	XString& operator = (XString &&right);
+
 	XString operator * (const XString &right);
 	XString operator / (const XString &right);
 	XString operator + (const XString &right);

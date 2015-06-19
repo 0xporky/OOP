@@ -17,6 +17,9 @@ XString::XString(const XString &obj) {
 	strcpy_s(this->str, this->len, obj.str);
 }
 
+XString::XString(XString&& obj) : str(obj.str)
+{ obj.str = nullptr; }
+
 XString::~XString() {
 	delete[]this->str;
 	this->str = nullptr;
@@ -38,6 +41,13 @@ XString& XString::operator = (const XString &right) {
 	this->str = new char[this->len];
 	strcpy_s(this->str, this->len, right.str);
 }
+
+XString& XString::operator = (XString &&right) {
+	this->str = right.str;
+	right.str = nullptr;
+	return *this;
+}
+
 
 XString XString::operator * (const XString &right) {
 	XString result;
