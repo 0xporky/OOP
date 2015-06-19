@@ -48,6 +48,7 @@ Var& Var::operator = (const Var &right) {
 		return *this;
 	}
 	this->cpy_obj(right);
+	return *this;
 }
 
 Var Var::operator * (const Var &right) {
@@ -186,7 +187,7 @@ const bool Var::operator <= (const Var &right) {
 }
 
 
-/*const bool Var::operator != (const Var &right) {
+const bool Var::operator != (const Var &right) {
 	if (this->status == VarStatus::intvar) {
 		return this->ivar != right.toint();
 	}
@@ -198,7 +199,7 @@ const bool Var::operator <= (const Var &right) {
 	}
 
 	return false;
-}*/
+}
 
 const bool Var::operator == (const Var &right) {
 	if (this->status == VarStatus::intvar) {

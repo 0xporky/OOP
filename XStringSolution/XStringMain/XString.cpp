@@ -231,3 +231,16 @@ bool operator == (const XString &left, const char *right) {
 bool operator == (const char *left, const XString &right) {
 	return strcmp(left, right.str) == 0;
 }
+
+
+bool operator != (const XString &left, const XString &right) {
+	return strcmp(left.str, right.str) != 0;
+}
+
+bool operator != (const XString &left, const char *right) {
+	return strcmp(left.str, right) != 0;
+}
+
+bool operator != (const char *left, const XString &right) {
+	return strcmp(left, right.str) != 0;
+}
