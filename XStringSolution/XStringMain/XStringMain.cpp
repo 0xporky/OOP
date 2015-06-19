@@ -63,6 +63,18 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	c = a + d;
 	cout << c << endl;
+
+	Var a1 = 15, b1 = "Hellow", d1 = "50";
+	b1 = a1 + d1;
+	cout << b1 << endl;
+
+	if (a1 == b1)
+		cout << "Equal" << endl;
+	else
+		cout << "Not Equal" << endl;
+
+	cin >> d1;
+	cout << d1 << endl;
 	
 	return 0;
 }

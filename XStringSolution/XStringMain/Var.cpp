@@ -230,18 +230,18 @@ std::ostream& operator << (std::ostream& op, const Var &right) {
 	return op;
 }
 
-std::istream& Var::operator >> (std::istream& ip) {
-	if (this->status == VarStatus::intvar) {
-		ip >> this->ivar;
+std::istream& operator >> (std::istream& ip, Var &right) {
+	if (right.status == VarStatus::intvar) {
+		ip >> right.ivar;
 	}
-	else if (this->status == VarStatus::doublevar) {
-		ip >> this->dvar;
+	else if (right.status == VarStatus::doublevar) {
+		ip >> right.dvar;
 	}
-	else if (this->status == VarStatus::xstrvar) {
+	else if (right.status == VarStatus::xstrvar) {
 		char ch[200];
 		memset(ch, '\0', 200);
 		ip >> ch;
-		this->xsvar = XString(ch);
+		right.xsvar = XString(ch);
 	}
 
 	return ip;

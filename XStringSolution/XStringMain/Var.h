@@ -37,7 +37,7 @@ public:
 	const bool operator == (const Var &right);
 
 	friend std::ostream& operator << (std::ostream& op, const Var &right);
-	std::istream& operator >> (std::istream& ip);
+	friend std::istream& operator >> (std::istream& ip, Var &right);
 
 	const int toint() const;
 	const double todouble() const;
