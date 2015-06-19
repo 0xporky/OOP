@@ -2,7 +2,7 @@
 //
 
 #include "stdafx.h"
-#include "XString.h"
+#include "Var.h"
 
 #include <iostream>
 
@@ -52,6 +52,17 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	if ("test" < s5) cout << "test < s5" << endl;
 	else cout << "test >= s5" << endl;
+
+
+	Var a(10), b = "120", c, d = "str";
+	c = a + b;
+	cout << c << endl;
+
+	c = b + a;
+	cout << c << endl;
+
+	c = a + d;
+	cout << c << endl;
 	
 	return 0;
 }

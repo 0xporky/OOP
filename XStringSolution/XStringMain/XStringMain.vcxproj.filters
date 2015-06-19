@@ -27,6 +27,9 @@
     <ClInclude Include="XString.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Var.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -36,6 +39,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="XString.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Var.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
