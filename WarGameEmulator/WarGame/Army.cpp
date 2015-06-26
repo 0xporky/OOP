@@ -43,7 +43,7 @@ Army::~Army() {
 	delete[] this->name;
 }
 
-Unit* Army::defend() const {
+Unit* Army::get_rnd_unit() const {
 	int rnd_idx = this->gr.get_rand_number(0, this->unit_num);
 	Unit* u = nullptr;
 	do {
@@ -59,8 +59,12 @@ const bool Army::is_defeated() const {
 }
 
 const bool Army::attack(Army* army) {
-	Unit* enemy_unit = army->defend();
-	Unit* my_unit = this->defend();
+	Unit* my_unit = this->get_rnd_unit();
+	Unit* enemy_unit = nullptr;
+	if (!army->get_same_unit(my_unit, enemy_unit)) {
+		enemy_unit = army->get_rnd_unit();
+	}
+	
 	bool result = my_unit->attack(enemy_unit);
 
 	this->set_message(my_unit->get_last_message());
@@ -138,4 +142,28 @@ const UnitParams Army::get_unit_params_by_id(const int id) const {
 
 const char* Army::get_name() const {
 	return this->name;
+}
+
+const bool Army::get_same_unit(Unit* attacker, Unit* &defender) const {
+	Unit* tmp = nullptr;
+
+	for (int i = 0; i < this->unit_num; i++) {
+		if (this->units[i]->is_unit_alive() && typeid(*attacker) == typeid(*this->units[i])) {
+			if (tmp == nullptr) {
+				tmp = this->units[i];
+			}
+			else {
+				if (tmp->get_unit_hp() < this->units[i]->get_unit_hp()) {
+					tmp = this->units[i];
+				}
+			}
+		}
+	}
+
+	if (tmp == nullptr) {
+		return false;
+	}
+
+	defender = tmp;
+	return true;
 }

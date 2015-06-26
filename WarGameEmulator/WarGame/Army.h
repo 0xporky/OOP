@@ -6,6 +6,7 @@
 #include "Mage.h"
 
 #include <cctype>
+#include <typeinfo>
 
 enum UnitType { SwordsmanUnit = 1, ArcherUnit, MageUnit };
 
@@ -23,7 +24,6 @@ public:
 	~Army();
 
 	const bool attack(Army* army); // true ÿךשמ ןונולמדכט
-	Unit* defend() const;
 
 	const char* say() const;
 	const char* get_name() const;
@@ -37,6 +37,8 @@ private:
 	Army(Army&);
 	
 	const bool is_defeated() const;
+	Unit* get_rnd_unit() const;
+	const bool get_same_unit(Unit* attacker, Unit* &defender) const;
 
 	Unit** units;
 	GameRandomizer gr;

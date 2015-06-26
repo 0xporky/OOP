@@ -19,7 +19,7 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	srand(unsigned(time(0)));
 
-	const int unit_num = 3;
+	const int unit_num = 5;
 	GameRandomizer gr;
 	Army Orcs(unit_num, "Orcs"), Humans(unit_num, "Humans");
 	Army* attacker = nullptr, * defender = nullptr, *buff = nullptr;
