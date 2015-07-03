@@ -2,6 +2,7 @@
 //
 
 #include "stdafx.h"
+#include "XString.h"
 #include "Var.h"
 
 #include <iostream>
@@ -42,6 +43,26 @@ int _tmain(int argc, _TCHAR* argv[])
 		}
 
 		cout << "Char is: " << ch << endl;
+	}
+
+	cout << "\n\n\n\n";
+
+	Var a = 123.456;
+	a[0] = '0';
+	cout << a << endl; // 120.456
+	a[-1] = '8';
+	cout << a << endl; // 120.486
+	a += 7;
+	cout << a << endl;  // 127.486
+
+	try {
+		a[20] = '5';
+	} 
+	catch (const std::range_error &e) {
+		cout << "Range error: " << e.what() << endl;
+	}
+	catch (...) {
+		cout << "Unknown error.\n";
 	}
 	
 	return 0;
