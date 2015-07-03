@@ -2,6 +2,7 @@
 #pragma once
 
 #include <cstring>
+#include <stdexcept>
 
 class XString {
 public:
