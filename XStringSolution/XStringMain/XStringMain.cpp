@@ -2,6 +2,7 @@
 //
 
 #include "stdafx.h"
+#include "XString.h"
 #include "Var.h"
 
 #include <iostream>
@@ -10,71 +11,59 @@ using namespace std;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	XString s1("test"), s2("test2"), s3, s4, s5;
-	XString ss1("Microsoft"), ss2("Windows"), ss4;
-	XString aa1("Microsoft"), aa2("Windows");
-	XString bb1("Microsoft"), bb2("Windows");
+	char str[200];
+	bool loop = true;
+	int index = 0;
 
-	cout << "Testig get_str(): \t"<< s1.get_str() << endl;
+	cout << "Enter the line: ";
+	cin.getline(str, sizeof(str));
 
-	s3 = s1 + s2;
-	cout << "Testing s3 = s1 + s2: \t" << s3.get_str() << endl;
+	XString my_str(str);
 
-	s3 += " Andrew Komar";
-	cout << "s2 + Andrew Komar: \t" << s3.get_str() << endl;
+	while (loop) {
+		cout << "Enter the number of character (-1 to exit): ";
+		cin >> index;
+		char ch = 0;
 
-	s4 = "Superman " + s1 ;
-	cout << "Superman + s1: \t\t" << s4.get_str() << endl;
+		if (index == -1) {
+			loop = false;
+			continue;
+		}
 
-	ss4 = ss1 * ss2;
-	cout << "* \t\t\t" << ss4.get_str() << endl;
+		try {
+			ch = my_str[index];
+		}
+		catch (const std::range_error &e) {
+			cout << "Range error: " << e.what() << endl;
+			continue;
+		}
+		catch (...) {
+			cout << "Unknown error.\n";
+			continue;
+		}
 
-	aa1 *= aa2;
-	cout << "*= \t\t\t" << aa1.get_str() << endl;
+		cout << "Char is: " << ch << endl;
+	}
 
-	ss4 = ss1 / ss2;
-	cout << "/ \t\t\t" << ss4.get_str() << endl;
+	cout << "\n\n\n\n";
 
-	bb1 /= bb2;
-	cout << "/= \t\t\t" << bb1.get_str() << endl;
+	Var a = 123.456;
+	a[0] = '0';
+	cout << a << endl; // 120.456
+	a[-1] = '8';
+	cout << a << endl; // 120.486
+	a += 7;
+	cout << a << endl;  // 127.486
 
-	s1[3] = 'x';
-	cout << s1.get_str() << endl;
-
-	s5 = s2(2, 2);
-	cout << s5.get_str() << endl;
-
-	if (s5 < s4) cout << "s5 < s4" << endl;
-	else cout << "s5 >= s4" << endl;
-
-	if (s5 < "test") cout << "s5 < test" << endl;
-	else cout << "s5 >= test" << endl;
-
-	if ("test" < s5) cout << "test < s5" << endl;
-	else cout << "test >= s5" << endl;
-
-
-	Var a(10), b = "120", c, d = "str";
-	c = a + b;
-	cout << c << endl;
-
-	c = b + a;
-	cout << c << endl;
-
-	c = a + d;
-	cout << c << endl;
-
-	Var a1 = 15, b1 = "Hellow", d1 = "50";
-	b1 = a1 + d1;
-	cout << b1 << endl;
-
-	if (a1 == b1)
-		cout << "Equal" << endl;
-	else
-		cout << "Not Equal" << endl;
-
-	cin >> d1;
-	cout << d1 << endl;
+	try {
+		a[20] = '5';
+	} 
+	catch (const std::range_error &e) {
+		cout << "Range error: " << e.what() << endl;
+	}
+	catch (...) {
+		cout << "Unknown error.\n";
+	}
 	
 	return 0;
 }

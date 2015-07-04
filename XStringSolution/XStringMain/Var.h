@@ -1,17 +1,19 @@
 
 #pragma once
 
-#include "XString.h"
 #include <iostream>
+#include <string>
+#include <stdexcept>
+#include <math.h>
 
-enum VarStatus {intvar=1, doublevar, xstrvar};
+enum VarStatus {intvar=1, doublevar, strvar};
 
 class Var {
 public:
 	Var();
 	Var(int var);
 	Var(double var);
-	Var(XString var);
+	Var(std::string var);
 
 	Var(Var &obj);
 
@@ -27,6 +29,9 @@ public:
 	Var operator /= (const Var &right);
 	Var operator -= (const Var &right);
 
+	Var &operator [] (const int idx);
+	Var &operator = (const char &right);
+
 	const bool operator > (const Var &right);
 	const bool operator < (const Var &right);
 
@@ -41,15 +46,18 @@ public:
 
 	const int toint() const;
 	const double todouble() const;
-	const XString toxstring() const;
+	const std::string toxstring() const;
 
 private:
 
 	const void cpy_obj(const Var &obj);
+	const bool check_range(const int idx) const;
 
 	int ivar;
 	double dvar;
-	XString xsvar;
+	std::string strvar;
+	
+	int index;
 
 	VarStatus status;
 

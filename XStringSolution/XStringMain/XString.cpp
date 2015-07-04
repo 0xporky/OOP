@@ -152,16 +152,26 @@ XString& operator += (XString &left, const char *right) {
 
 char &XString::operator [] (const int idx) {
 	if ((this->len - 2) < idx) {
-		return this->str[this->len - 2];
+		throw std::range_error("Char index is out of range.");
+	}
+	else if (idx < 0) {
+		throw std::range_error("Char index is above 0.");
 	}
 	return this->str[idx];
 }
 
 XString XString::operator() (const int idx, const int size) {
+	
 	if (idx > this->len - 2) {
-		XString s;
-		return s;
+		throw std::range_error("Char index is out of range.");
 	}
+	else if (idx < 0) {
+		throw std::range_error("Char index is above 0.");
+	}
+	else if (idx + size > this->len) {
+		throw std::length_error("Out of memory.");
+	}
+
 	char *tmp = new char[size+1];
 	strncpy_s(tmp, size+1, &this->str[idx], size);
 	tmp[size] = '\0';
